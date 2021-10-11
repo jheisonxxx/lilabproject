@@ -20,7 +20,7 @@ class Client(models.Model):
     debt_sbs = models.DecimalField(decimal_places=3, max_digits=10, blank = False)
 
     def __str__(self):
-        return self.dni + " - " + self.name 
+        return str(self.dni) + " - " + self.name 
 
 
 class Solicitude(models.Model):
@@ -39,6 +39,8 @@ class Solicitude(models.Model):
     )
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     credit_indicator = models.IntegerField(blank = False)
+    amount = models.DecimalField(decimal_places=3, max_digits=10, blank = False)
+
 
     def __str__(self):
         return self.state

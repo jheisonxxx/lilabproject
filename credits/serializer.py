@@ -9,8 +9,12 @@ class ClientSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class SolicitudeSerializer(serializers.ModelSerializer):
-    #question = QuestionSerializer(read_only=True)
-
     class Meta:
         model = Solicitude
-        fields = ['id','state','credit_indicator','client']
+        fields = ['id','state','credit_indicator','client','amount']
+        write_only_fields = ('client',)
+    
+    def to_representation(self, instance):
+        response = super().to_representation(instance)
+        response['client'] = ClientSerializer(instance.client).data
+        return response
