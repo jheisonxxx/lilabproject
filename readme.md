@@ -41,7 +41,7 @@ Precargar datos(puede obviarlos si se desea crear clientes y solicitudes desde c
 =====
 
 ```
-docker-compose -f docker-compose.yml run --rm web python manage.py loaddata > db_solicitudes.json
+docker-compose -f docker-compose.yml run --rm web python manage.py loaddata db_solicitudes.json
 ```
 
 CLIENTES
